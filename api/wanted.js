@@ -3,7 +3,7 @@ const Options = {
   1: {
     width: 210.6,
     height: 283.8,
-    url: 'https://i.ibb.co/YTR3XwF/wanted1.jpg',
+    url: 'https://i.pinimg.com/736x/11/95/75/119575ce5020217b48e8708f8d156bd5.jpg',
     img: {
       w: 36,
       h: 100,
@@ -14,7 +14,7 @@ const Options = {
   2: {
     width: 210.6,
     height: 276.51,
-    url: 'https://i.ibb.co/M66JzcT/wanted2.png',
+    url: 'https://i.pinimg.com/736x/11/95/75/119575ce5020217b48e8708f8d156bd5.jpg',
     img: {
       w: 50.7,
       h: 105.3,
@@ -94,7 +94,7 @@ module.exports = async function wanted(query) {
   obj.stream = true
   obj.contentType = 'image/png'
   obj.code = '200'
-  obj.data = canvas.createPNGStream()
+  obj.data = canvas.toBuffer('image/png');
 
   return obj
 }
