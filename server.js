@@ -1,5 +1,5 @@
 const express = require('express');
-const canvas = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 
 const app = express();
 app.use(express.json());
@@ -12,15 +12,15 @@ app.get('/canvas/welcome', async (req, res) => {
   const membercount = req.query.membercount || 0;
   const gcicon = req.query.gcicon || 'https://i.ibb.co/jfZVKmC/babi2.jpg';
 
-  const canvasObject = canvas.createCanvas(600, 400);
+  const canvasObject = createCanvas(600, 400);
   const ctx = canvasObject.getContext('2d');
 
   // Menggambar background
-  const background = await canvas.loadImage(bg);
+  const background = await loadImage(bg);
   ctx.drawImage(background, 0, 0, canvasObject.width, canvasObject.height);
 
   // Menggambar foto profil dengan batas lingkaran
-  const profilePic = await canvas.loadImage(pp);
+  const profilePic = await loadImage(pp);
   const profilePicSize = 100;
   const profilePicX = 50;
   const profilePicY = canvasObject.height / 2 - profilePicSize / 2;
@@ -57,7 +57,7 @@ app.get('/canvas/welcome', async (req, res) => {
   ctx.fillText(`Members: ${membercount}`, textX, memberCountTextY);
 
   // Menggambar ikon grup dengan batas persegi
-  const groupIcon = await canvas.loadImage(gcicon);
+  const groupIcon = await loadImage(gcicon);
   const groupIconSize = 100;
   const groupIconX = canvasObject.width - groupIconSize - 50;
   const groupIconY = canvasObject.height / 2 - groupIconSize / 2;
