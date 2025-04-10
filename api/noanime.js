@@ -1,6 +1,9 @@
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const Data = {};
 
+const path = require('path')
+GlobalFonts.registerFromPath(path.join(__dirname, '..', 'fonts', 'Arial Black.ttf'), 'Arial')
+
 module.exports = async function noAnime(query) {
   const obj = {};
 
