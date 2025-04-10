@@ -1,6 +1,6 @@
 const { createCanvas, loadImage, GlobalFonts } = require('@napi-rs/canvas');
 
-GlobalFonts.registerFromPath('Uni Sans Heavy.otf', 'Uni-Sans-Heavy');
+GlobalFonts.registerFromPath(path.join(__dirname, '..', 'Uni Sans Heavy.otf'), 'Uni-Sans-Heavy')
 
 const defaults = {
 	text: '#FFFFFF',
