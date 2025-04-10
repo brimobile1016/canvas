@@ -5,10 +5,12 @@ async function fn(get, req, res) {
 		if (data.contentType) {
 			res.setHeader('Content-Type', data.contentType)
 			if (data.stream) {
-				data.data.pipe(res)
+	// kalau ternyata bukan stream, kirim langsung pakai Buffer
+			res.send(data.data)
 			} else {
-				res.send(data.data)
-			}
+			res.send(data.data)
+		}
+
 			res.status(parseInt(data.code))
 		} else {
 			res.status(parseInt(data.code)).json(data)
