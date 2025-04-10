@@ -8,7 +8,7 @@ let i = 1
 app.use(function timedOut(req, res, next) {
 	process.stderr.write(`${i++}\n`)
 	
-	res.setTimeout(3000, function timeOut() {
+	res.setTimeout(10000, function timeOut() {
 		if (!res.headersSent) {
 			res.status(408).json({
 				message: 'Timed out!',
