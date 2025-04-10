@@ -28,11 +28,11 @@ module.exports = async function noAnime(query) {
   }
 
   if (!Data.img) {
-    Data.img = await loadImage('https://i.ibb.co/3fq03cZ/noanime.png');
+    Data.img = await loadImage('https://thumbs.dreamstime.com/b/happy-cartoon-boy-holding-no-entry-sign-cheerful-illustration-blue-hair-323806691.jpg');
   }
 
   if (!Data.cross) {
-    Data.cross = await loadImage('https://i.ibb.co/Nm6Gzrp/cross.png');
+    Data.cross = await loadImage('https://www.iconsdb.com/icons/preview/red/x-mark-3-xxl.png');
   }
 
   const canvas = createCanvas(512, 341.2);
@@ -79,7 +79,7 @@ module.exports = async function noAnime(query) {
   obj.stream = true;
   obj.contentType = 'image/png';
   obj.code = '200';
-  obj.data = canvas.createPNGStream();
+  obj.data = canvas.toBuffer('image/png');
 
   return obj;
 };
