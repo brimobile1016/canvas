@@ -188,7 +188,7 @@ module.exports = async function rankCard(reqQuery) {
 	obj.stream = true
 	obj.contentType = 'image/png'
 	obj.code = '200'
-	obj.data = canvas.createPNGStream()
+	obj.data = canvas.toBuffer('image/png');
 
 	return obj
 }
